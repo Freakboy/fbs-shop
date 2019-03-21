@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>net.b521</groupId>
+    <artifactId>fbs-shop</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>fbs-shop-common</module>
+        <module>fbs-shop-common-pojo</module>
+    </modules>
+    <!-- 作为全局聚合依赖管理 -->
+    <packaging>pom</packaging>
+
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.6.RELEASE</version>
+    </parent>
+
+
+    <properties>
+
+        <!-- 项目常规设置 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!-- 统一版本 -->
+        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
+        <springboot.version>2.0.6.RELEASE</springboot.version>
+        <springboot.druid.version>1.1.10</springboot.druid.version>
+        <springboot.mybatis.version>1.3.2</springboot.mybatis.version>
+        <springboot.pagehelper.version>1.2.3</springboot.pagehelper.version>
+        <thymeleaf.extras.version>3.0.2.RELEASE</thymeleaf.extras.version>
+        <webjars.version>1.0.2</webjars.version>
+        <jboss.resteasy.version>3.0.9.Final</jboss.resteasy.version>
+        <mysql.version>5.1.46</mysql.version>
+        <mybatis.version>1.3.2</mybatis.version>
+        <lombok.version>1.18.2</lombok.version>
+        <junit.version>4.12</junit.version>
+        <guava.version>26.0-jre</guava.version>
+        <jsch.version>2.8.2</jsch.version>
+        <commons-lang3.version>3.4</commons-lang3.version>
+        <commons-io.version>2.4</commons-io.version>
+        <commons-collections.version>3.2.1</commons-collections.version>
+        <commons-beanutils.version>1.9.3</commons-beanutils.version>
+        <commons-net.version>3.3</commons-net.version>
+        <commons-fileupload>1.4</commons-fileupload>
+        <httpclient.version>4.5.3</httpclient.version>
+        <jackson.version>2.9.8</jackson.version>
+        <json-lib.version>2.4</json-lib.version>
+        <fastjson.version>1.2.51</fastjson.version>
+        <log4j.version>1.2.17</log4j.version>
+        <log4jdbc.version>1.2</log4jdbc.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <hazelcast-all.version>3.11</hazelcast-all.version>
+        <IKExpression.version>2.1.2</IKExpression.version>
+        <joda-time.version>2.9.9</joda-time.version>
+        <quartz.version>2.3.0</quartz.version>
+        <jedis.version>2.7.2</jedis.version>
+        <solrj.version>5.4.0</solrj.version>
+        <dubbo.version>2.6.5</dubbo.version>
+        <zookeeper.version>3.4.7</zookeeper.version>
+        <zkclient.version>0.10</zkclient.version>
+        <apache.kafka.version>1.1.1</apache.kafka.version>
+        <activemq.version>5.11.2</activemq.version>
+        <javassist.version>3.24.1-GA</javassist.version>
+        <mina.version>2.0.20</mina.version>
+        <servlet-api.version>4.0.1</servlet-api.version>
+        <grizzly.version>2.1.4</grizzly.version>
+        <xstream.version>1.4.11.1</xstream.version>
+        <!--<jetty.version>6.1.26</jetty.version>-->
+        <cxf.version>3.3.0</cxf.version>
+        <webjars.sockjs.version>1.0.2</webjars.sockjs.version>
+        <webjars.stomp.websocket.version>2.3.3</webjars.stomp.websocket.version>
+        <webjars.bootstrap.version>3.3.7</webjars.bootstrap.version>
+        <webjars.jquery.version>3.1.0</webjars.jquery.version>
+
+
+
+
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!--&lt;!&ndash; spring cloud 引入 &ndash;&gt;-->
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.cloud</groupId>-->
+                <!--<artifactId>spring-cloud-starter-parent</artifactId>-->
+                <!--<version>{spring-cloud-version}</version>-->
+                <!--<type>pom</type>-->
+                <!--<scope>import</scope>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.cloud</groupId>-->
+                <!--<artifactId>spring-cloud-dependencies</artifactId>-->
+                <!--<version>{spring-cloud-version}</version>-->
+                <!--<type>pom</type>-->
+                <!--<scope>import</scope>-->
+            <!--</dependency>-->
+
+            <!--&lt;!&ndash; 定义 spring boot 版本 &ndash;&gt;
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>-->
+
+
+            <!-- Springboot Redis 集成-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+            </dependency>
+
+            <!-- Springboot Web 集成-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
+
+            <!-- data-elasticsearch 集成 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+            </dependency>
+
+
+            <!-- 集成阿里巴巴数据库连接池 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${springboot.druid.version}</version>
+            </dependency>
+
+
+            <!-- MyBatis集成 -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${springboot.mybatis.version}</version>
+            </dependency>
+
+            <!-- MySQL连接驱动 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <scope>runtime</scope>
+            </dependency>
+
+            <!-- SpringBoot Test 集成-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- SpringBoot集成thymeleaf and Security -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.thymeleaf.extras</groupId>
+                <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+                <version>${thymeleaf.extras.version}</version>
+            </dependency>
+
+
+            <!-- Springboot Security 集成-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+            </dependency>
+
+
+            <!-- Springboot aop 集成-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+            </dependency>
+
+
+            <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-security</artifactId>-->
+            <!--</dependency>-->
+
+
+            <!-- Springboot websocket 集成-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-websocket</artifactId>
+            </dependency>
+
+            <!-- 使用WebJar管理前端静态文件 -->
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>webjars-locator-core</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>sockjs-client</artifactId>
+                <version>${webjars.sockjs.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>stomp-websocket</artifactId>
+                <version>${webjars.stomp.websocket.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>${webjars.bootstrap.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>jquery</artifactId>
+                <version>${webjars.jquery.version}</version>
+            </dependency>
+
+
+            <!-- Springboot 开发工具热启动 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <optional>true</optional><!-- 表示依赖不会传递 -->
+            </dependency>
+
+            <!--&lt;!&ndash; 集成Spring boot Resteasy&ndash;&gt;-->
+            <!--<dependency>-->
+            <!--<groupId>com.paypal.springboot</groupId>-->
+            <!--<artifactId>resteasy-spring-boot-starter</artifactId>-->
+            <!--<version>2.3.4-RELEASE</version>-->
+            <!--<scope>runtime</scope>-->
+            <!--</dependency>-->
+
+
+            <!-- 集成kafka -->
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+            </dependency>
+
+            <!-- kafka test -->
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka-test</artifactId>
+                <scope>test</scope>
+            </dependency>
+
+
+            <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka -->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka_2.12</artifactId>
+                <version>${apache.kafka.version}</version>
+            </dependency>
+
+
+
+
+
+
+            <!-- 使用Resteasy -->
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-spring</artifactId>
+                <version>${jboss.resteasy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jaxb-provider</artifactId>
+                <version>${jboss.resteasy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jackson-provider</artifactId>
+                <version>${jboss.resteasy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jaxrs</artifactId>
+                <version>${jboss.resteasy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jsapi</artifactId>
+                <version>${jboss.resteasy.version}</version>
+            </dependency>
+            <!-- <dependency> <groupId>org.mortbay.jetty</groupId> <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.15</version> <scope>test</scope> </dependency> -->
+            <dependency>
+                <groupId>org.jboss.spec.javax.servlet</groupId>
+                <artifactId>jboss-servlet-api_3.1_spec</artifactId>
+                <version>${jboss.resteasy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>tjws</artifactId>
+                <version>${jboss.resteasy.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-client</artifactId>
+                <version>${jboss.resteasy.version}</version>
+            </dependency>
+
+
+
+
+            <!-- lombok插件 -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <optional>true</optional>
+                <scope>provided</scope>
+            </dependency>
+
+
+            <!-- pagehelper 分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${springboot.pagehelper.version}</version>
+            </dependency>
+
+            <!--&lt;!&ndash; 阿里巴巴数据库连接池 &ndash;&gt;-->
+            <!--<dependency>-->
+            <!--<groupId>com.alibaba</groupId>-->
+            <!--<artifactId>druid</artifactId>-->
+            <!--<version>1.1.10</version>-->
+            <!--</dependency>-->
+
+
+            <!-- 自定义jar依赖,开发时的依赖引用 -->
+            <!--<dependency>-->
+            <!--<groupId>com.heetian.nsrep</groupId>&lt;!&ndash; 自定义 &ndash;&gt;-->
+            <!--<artifactId>nsrep-openstack</artifactId>&lt;!&ndash; 自定义 &ndash;&gt;-->
+            <!--<version>0.0.1-SNAPSHOT</version>&lt;!&ndash; 自定义 &ndash;&gt;-->
+            <!--<scope>system</scope> &lt;!&ndash;system，类似provided，需要显式提供依赖的jar以后，Maven就不会在Repository中查找它 &ndash;&gt;-->
+            <!--<systemPath>${pom.basedir}/src/main/java/lib/nsrep-openstack-0.0.1-SNAPSHOT.jar-->
+            <!--</systemPath>&lt;!&ndash;项目根目录下的lib文件夹下 &ndash;&gt;-->
+            <!--</dependency>-->
+
+
+            <!-- 项目打包时开启,使用本地仓库安装的依赖 -->
+            <dependency>
+                <groupId>com.heetian.nsrep</groupId><!-- 自定义 -->
+                <artifactId>nsrep-openstack</artifactId><!-- 自定义 -->
+                <version>0.0.1-SNAPSHOT</version><!-- 自定义 -->
+            </dependency>
+
+            <!-- guava工具包 -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <!-- ssh远程操作类 -->
+            <!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->
+            <dependency>
+                <groupId>com.jcraft</groupId>
+                <artifactId>jsch</artifactId>
+                <version>${jsch.version}</version>
+            </dependency>
+
+            <!-- Google出品的一个JSON解析library -->
+            <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+
+            <!-- 时间操作组件 -->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+
+
+            <!-- Apache 相关工具包 -->
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+
+
+            <!-- 集成fastjson -->
+            <dependency>
+                <groupId>net.sf.json-lib</groupId>
+                <artifactId>json-lib</artifactId>
+                <version>${json-lib.version}</version>
+                <classifier>jdk15</classifier><!--指定jdk版本 -->
+            </dependency>
+
+            <!-- 阿里巴巴JSON工具 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+
+            <!--&lt;!&ndash;&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core &ndash;&gt;&ndash;&gt;-->
+            <!--<dependency>-->
+            <!--<groupId>org.apache.logging.log4j</groupId>-->
+            <!--<artifactId>log4j-core</artifactId>-->
+            <!--<version>2.10.0</version>-->
+            <!--</dependency>-->
+
+            <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.googlecode.log4jdbc</groupId>
+                <artifactId>log4jdbc</artifactId>
+                <version>${log4jdbc.version}</version>
+            </dependency>
+
+
+            <!-- 分布式集群框架hazelcast集成 -->
+            <!-- https://mvnrepository.com/artifact/com.hazelcast/hazelcast-all -->
+            <dependency>
+                <groupId>com.hazelcast</groupId>
+                <artifactId>hazelcast-all</artifactId>
+                <version>${hazelcast-all.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <optional>true</optional>
+            </dependency>
+
+            <!-- 表达式解析 -->
+            <dependency>
+                <groupId>org.wltea</groupId>
+                <artifactId>IKExpression</artifactId>
+                <version>${IKExpression.version}</version>
+            </dependency>
+
+            <!-- quartz任务调度框架 -->
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>${quartz.version}</version>
+            </dependency>
+
+
+        </dependencies>
+
+
+
+    </dependencyManagement>
+
+
+
+
+
+
+</project>
